@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>First-Time Mom Survival Bundle</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --blush: #F7E8E0;
+    --rose: #D4736A;
+    --deep: #2C1A1A;
+    --cream: #FDF8F5;
+    --sage: #8BA888;
+    --gold: #C9A96E;
+    --warm-white: #FFFAF7;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--warm-white);
+    color: var(--deep);
+    overflow-x: hidden;
+  }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(160deg, #2C1A1A 0%, #4a2828 60%, #6b3a3a 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 80px 24px 60px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 70% 30%, rgba(212,115,106,0.25) 0%, transparent 60%),
+                radial-gradient(ellipse at 20% 80%, rgba(201,169,110,0.15) 0%, transparent 50%);
+  }
+
+  .hero-inner { position: relative; z-index: 1; max-width: 780px; }
+
+  .eyebrow {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    border: 1px solid rgba(201,169,110,0.4);
+    padding: 8px 20px;
+    border-radius: 100px;
+    margin-bottom: 32px;
+    animation: fadeUp 0.8s ease both;
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.4rem, 6vw, 4.2rem);
+    font-weight: 900;
+    color: #fff;
+    line-height: 1.1;
+    margin-bottom: 24px;
+    animation: fadeUp 0.8s 0.15s ease both;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--rose);
+  }
+
+  .hero-sub {
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
+    color: rgba(255,255,255,0.75);
+    line-height: 1.7;
+    max-width: 580px;
+    margin: 0 auto 48px;
+    font-weight: 300;
+    animation: fadeUp 0.8s 0.3s ease both;
+  }
+  
+  .hero-cta {
+    animation: fadeUp 0.8s 0.45s ease both;
+  }
+
+  /* PAIN SECTION */
+  .pain {
+    background: var(--blush);
+    padding: 80px 24px;
+    text-align: center;
+  }
+
+  .pain-inner { max-width: 700px; margin: 0 auto; }
+
+  .pain h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 700;
+    margin-bottom: 24px;
+    line-height: 1.25;
+  }
+
+  .pain p {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: #5a3a3a;
+    margin-bottom: 16px;
+  }
+
+  .pain-list {
+    list-style: none;
+    margin: 32px 0;
+    text-align: left;
+    display: inline-block;
+  }
+
+  .pain-list li {
+    font-size: 1rem;
+    color: #5a3a3a;
+    padding: 10px 0 10px 36px;
+    position: relative;
+    border-bottom: 1px solid rgba(212,115,106,0.15);
+  }
+
+  .pain-list li::before {
+    content: '✗';
+    position: absolute;
+    left: 0;
+    color: var(--rose);
+    font-weight: 700;
+    font-size: 1.1rem;
+  }
+
+  /* SOLUTION */
+  .solution {
+    padding: 90px 24px;
+    background: var(--cream);
+    text-align: center;
+  }
+
+  .solution-inner { max-width: 800px; margin: 0 auto; }
+
+  .section-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--sage);
+    margin-bottom: 16px;
+    display: block;
+  }
+
+  .solution h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 700;
+    margin-bottom: 20px;
+    line-height: 1.25;
+  }
+
+  .solution p {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: #5a3a3a;
+    max-width: 600px;
+    margin: 0 auto 56px;
+  }
+
+  /* BUNDLE CARDS */
+  .bundle-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    margin-bottom: 24px;
+  }
+
+  .bundle-card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 28px 24px;
+    text-align: left;
+    border: 1px solid rgba(212,115,106,0.15);
+    box-shadow: 0 4px 24px rgba(44,26,26,0.06);
+    transition: transform 0.2s, box-shadow 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .bundle-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--rose), var(--gold));
+  }
+
+  .bundle-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(44,26,26,0.12);
+  }
+
+  .card-number {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: var(--rose);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+
+  .card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    line-height: 1.4;
+    margin-bottom: 10px;
+    color: var(--deep);
+  }
+
+  .card-desc {
+    font-size: 0.875rem;
+    color: #7a5a5a;
+    line-height: 1.6;
+  }
+
+  .card-value {
+    margin-top: 16px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--sage);
+  }
+
+  /* BONUS */
+  .bonus-section {
+    background: linear-gradient(135deg, #2C1A1A, #4a2828);
+    padding: 80px 24px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .bonus-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 80% 20%, rgba(201,169,110,0.2) 0%, transparent 55%);
+  }
+
+  .bonus-section .section-label { color: var(--gold); }
+
+  .bonus-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+    color: #fff;
+    margin-bottom: 20px;
+    position: relative;
+  }
+
+  .bonus-card {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(201,169,110,0.3);
+    border-radius: 20px;
+    padding: 40px 36px;
+    max-width: 560px;
+    margin: 0 auto;
+    position: relative;
+    backdrop-filter: blur(10px);
+  }
+
+  .bonus-badge {
+    position: absolute;
+    top: -16px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(90deg, var(--rose), var(--gold));
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 8px 20px;
+    border-radius: 100px;
+    white-space: nowrap;
+  }
+
+  .bonus-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    color: #fff;
+    margin-bottom: 16px;
+    font-weight: 700;
+  }
+
+  .bonus-desc {
+    color: rgba(255,255,255,0.7);
+    font-size: 0.95rem;
+    line-height: 1.7;
+    margin-bottom: 20px;
+  }
+
+  .bonus-features {
+    list-style: none;
+    text-align: left;
+    margin-bottom: 20px;
+  }
+
+  .bonus-features li {
+    color: rgba(255,255,255,0.8);
+    font-size: 0.9rem;
+    padding: 8px 0 8px 28px;
+    position: relative;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .bonus-features li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-weight: 700;
+  }
+
+  .bonus-value {
+    color: var(--gold);
+    font-weight: 600;
+    font-size: 0.95rem;
+  }
+
+  /* TIMER */
+  .timer-section {
+    background: var(--rose);
+    padding: 24px;
+    text-align: center;
+  }
+
+  .timer-text {
+    color: #fff;
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+
+  .timer {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+  }
+
+  .timer-block {
+    background: rgba(0,0,0,0.2);
+    border-radius: 10px;
+    padding: 12px 18px;
+    min-width: 64px;
+  }
+
+  .timer-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1;
+    display: block;
+  }
+
+  .timer-label {
+    font-size: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.7);
+    margin-top: 4px;
+    display: block;
+  }
+
+  /* GODFATHER OFFER */
+  .offer {
+    background: var(--cream);
+    padding: 90px 24px;
+    text-align: center;
+  }
+
+  .offer-inner { max-width: 700px; margin: 0 auto; }
+
+  .offer h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    font-weight: 900;
+    margin-bottom: 12px;
+    line-height: 1.15;
+  }
+
+  .offer-sub {
+    font-size: 1.05rem;
+    color: #7a5a5a;
+    margin-bottom: 48px;
+    line-height: 1.7;
+  }
+
+  .value-stack {
+    background: #fff;
+    border-radius: 20px;
+    padding: 36px 32px;
+    margin-bottom: 36px;
+    border: 1px solid rgba(212,115,106,0.15);
+    box-shadow: 0 8px 40px rgba(44,26,26,0.08);
+    text-align: left;
+  }
+
+  .value-stack h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    margin-bottom: 24px;
+    text-align: center;
+    color: var(--deep);
+  }
+
+  .value-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px dashed rgba(212,115,106,0.2);
+    font-size: 0.95rem;
+  }
+
+  .value-item:last-child { border-bottom: none; }
+  .value-item span:first-child { color: #5a3a3a; }
+  .value-item span:last-child { color: var(--sage); font-weight: 600; font-size: 0.9rem; }
+
+  .value-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0 0;
+    font-weight: 700;
+    font-size: 1.05rem;
+    border-top: 2px solid var(--rose);
+    margin-top: 8px;
+  }
+
+  .strikethrough { text-decoration: line-through; color: #aaa; font-size: 1rem; }
+
+  .price-display {
+    margin: 40px 0;
+  }
+
+  .was-price {
+    font-size: 1rem;
+    color: #aaa;
+    text-decoration: line-through;
+    margin-bottom: 4px;
+  }
+
+  .now-price {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3rem, 8vw, 5rem);
+    font-weight: 900;
+    color: var(--rose);
+    line-height: 1;
+  }
+
+  .price-note {
+    font-size: 0.85rem;
+    color: #7a5a5a;
+    margin-top: 8px;
+  }
+
+  /* CTA BUTTON */
+  .cta-btn {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--rose) 0%, #c45f56 100%);
+    color: #fff;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    padding: 20px 48px;
+    border-radius: 100px;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    letter-spacing: 0.5px;
+    box-shadow: 0 8px 32px rgba(212,115,106,0.4);
+    transition: transform 0.2s, box-shadow 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-btn::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.15), transparent);
+  }
+
+  .cta-btn:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 14px 40px rgba(212,115,106,0.5);
+  }
+
+  .cta-btn.gold {
+    background: linear-gradient(135deg, var(--gold) 0%, #b8934a 100%);
+    box-shadow: 0 8px 32px rgba(201,169,110,0.4);
+  }
+
+  .cta-btn.gold:hover {
+    box-shadow: 0 14px 40px rgba(201,169,110,0.5);
+  }
+
+  .cta-sub {
+    font-size: 0.8rem;
+    color: #aaa;
+    margin-top: 12px;
+  }
+
+  /* SCARCITY BAR */
+  .scarcity {
+    background: var(--deep);
+    padding: 20px 24px;
+    text-align: center;
+    color: #fff;
+    font-size: 0.9rem;
+  }
+
+  .scarcity strong { color: var(--gold); }
+
+  /* TESTIMONIALS */
+  .testimonials {
+    background: var(--blush);
+    padding: 80px 24px;
+  }
+
+  .testimonials-inner { max-width: 900px; margin: 0 auto; text-align: center; }
+
+  .testimonials h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+    margin-bottom: 48px;
+  }
+
+  .testi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+  }
+
+  .testi-card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 28px 24px;
+    text-align: left;
+    box-shadow: 0 4px 20px rgba(44,26,26,0.06);
+  }
+
+  .stars { color: var(--gold); font-size: 1rem; margin-bottom: 12px; }
+
+  .testi-text {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: #5a3a3a;
+    font-style: italic;
+    margin-bottom: 16px;
+  }
+
+  .testi-author { font-size: 0.85rem; font-weight: 600; color: var(--deep); }
+  .testi-role { font-size: 0.8rem; color: #aaa; }
+
+  /* FAQ */
+  .faq {
+    padding: 80px 24px;
+    background: var(--cream);
+  }
+
+  .faq-inner { max-width: 680px; margin: 0 auto; text-align: center; }
+
+  .faq h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+    margin-bottom: 40px;
+  }
+
+  .faq-item {
+    text-align: left;
+    border-bottom: 1px solid rgba(212,115,106,0.2);
+    padding: 20px 0;
+  }
+
+  .faq-q {
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--deep);
+    margin-bottom: 10px;
+    cursor: pointer;
+  }
+
+  .faq-a {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: #7a5a5a;
+  }
+
+  /* FINAL CTA */
+  .final-cta {
+    background: linear-gradient(160deg, #2C1A1A, #4a2828);
+    padding: 90px 24px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .final-cta::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 30% 70%, rgba(212,115,106,0.2) 0%, transparent 55%);
+  }
+
+  .final-cta-inner { position: relative; z-index: 1; max-width: 680px; margin: 0 auto; }
+
+  .final-cta h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    color: #fff;
+    margin-bottom: 16px;
+    line-height: 1.2;
+  }
+
+  .final-cta p {
+    color: rgba(255,255,255,0.7);
+    font-size: 1rem;
+    line-height: 1.7;
+    margin-bottom: 40px;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--deep);
+    padding: 24px;
+    text-align: center;
+    color: rgba(255,255,255,0.4);
+    font-size: 0.8rem;
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 600px) {
+    .value-stack { padding: 24px 20px; }
+    .bundle-card { padding: 22px 18px; }
+    .bonus-card { padding: 32px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- STICKY SCARCITY -->
+<div class="scarcity">
+  ⚠️ <strong>BONUS EXPIRES SOON</strong> — The Baby Feeding & Sleep Tracker disappears when the timer hits zero
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <span class="eyebrow">For First-Time Moms</span>
+    <h1>Everything You Need to <em>Survive & Thrive</em> From Pregnancy to Postpartum</h1>
+    <p class="hero-sub">Stop Googling at 2am. Stop second-guessing yourself. Get the complete, step-by-step guidance that walks you through every stage — so you can actually enjoy becoming a mum.</p>
+    <div class="hero-cta">
+      <img src="Screenshot_20260511-122645_1.png" alt="First-Time Mom Survival Bundle" style="width:100%; max-width:500px; margin:0 auto 32px; display:block; border-radius:16px;">
+      <a href="https://dylancoleman1.gumroad.com/l/firsttimemomsurvivalbundle" class="cta-btn gold">Yes! I Want the Full Bundle →</a>
+      <p class="cta-sub" style="color:rgba(255,255,255,0.4); margin-top:14px;">6 Guides + Bonus Tracker · Instant Digital Access</p>
+    </div>
+  </div>
+</section>
+
+<!-- PAIN -->
+<section class="pain">
+  <div class="pain-inner fade-in">
+    <h2>Being a First-Time Mum is <span style="color:var(--rose);">Overwhelming.</span> Let's Be Honest.</h2>
+    <p>You have a million questions and a million different people giving you a million different answers. You're exhausted, anxious, and just want to know you're doing it right.</p>
+    <ul class="pain-list">
+      <li>Spending hours searching Google, only to end up more confused</li>
+      <li>Not knowing what's "normal" and what needs a doctor's visit</li>
+      <li>Feeling unprepared for the hospital — what do you even pack?</li>
+      <li>Dreading the sleepless nights and not knowing how to handle them</li>
+      <li>Worried about breastfeeding and whether you'll get it right</li>
+      <li>Scared about recovery after birth — no one talks about THAT part</li>
+    </ul>
+    <p><strong>You deserve better than scattered advice from strangers on the internet.</strong></p>
+  </div>
+</section>
+
+<!-- SOLUTION -->
+<section class="solution">
+  <div class="solution-inner fade-in">
+    <span class="section-label">The Solution</span>
+    <h2>Introducing the First-Time Mom <span style="color:var(--rose);">Survival Bundle</span></h2>
+    <p>Six comprehensive guides covering every single stage of your journey — written clearly, practically, and with you in mind. No fluff. No overwhelm. Just exactly what you need, when you need it.</p>
+
+    <div class="bundle-grid">
+      <div class="bundle-card fade-in">
+        <div class="card-number">Guide 01</div>
+        <div class="card-title">How to Navigate Pregnancy Month by Month</div>
+        <div class="card-desc">A complete month-by-month roadmap of what to expect, how your body changes, and exactly what to do at each stage.</div>
+        <div class="card-value">Value: £35</div>
+      </div>
+      <div class="bundle-card fade-in">
+        <div class="card-number">Guide 02</div>
+        <div class="card-title">How to Pack the Perfect Hospital Bag</div>
+        <div class="card-desc">Never show up underprepared. A complete checklist of everything you, your partner, and baby need — nothing more, nothing less.</div>
+        <div class="card-value">Value: £25</div>
+      </div>
+      <div class="bundle-card fade-in">
+        <div class="card-number">Guide 03</div>
+        <div class="card-title">How to Care for Your Newborn in the First 90 Days</div>
+        <div class="card-desc">The real guide to newborn care — feeding, sleeping, crying, bathing, and everything in between. Confidence from day one.</div>
+        <div class="card-value">Value: £45</div>
+      </div>
+      <div class="bundle-card fade-in">
+        <div class="card-number">Guide 04</div>
+        <div class="card-title">How to Breastfeed Successfully</div>
+        <div class="card-desc">A beginner's guide that walks you through latching, supply, common challenges, and how to make breastfeeding actually work for you.</div>
+        <div class="card-value">Value: £35</div>
+      </div>
+      <div class="bundle-card fade-in">
+        <div class="card-number">Guide 05</div>
+        <div class="card-title">How to Recover After Childbirth</div>
+        <div class="card-desc">The postpartum guide no one gives you. Physical recovery, emotional health, and everything you need to heal properly.</div>
+        <div class="card-value">Value: £40</div>
+      </div>
+      <div class="bundle-card fade-in">
+        <div class="card-number">Guide 06</div>
+        <div class="card-title">How to Eliminate Early Morning Pregnancy Nausea Naturally</div>
+        <div class="card-desc">Practical, natural remedies that actually work — so you can get through the first trimester without suffering through every morning.</div>
+        <div class="card-value">Value: £25</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TIMER -->
+<div class="timer-section">
+  <div class="timer-text">⏰ Your exclusive bonus disappears in</div>
+  <div class="timer">
+    <div class="timer-block"><span class="timer-num" id="hours">47</span><span class="timer-label">Hours</span></div>
+    <div class="timer-block"><span class="timer-num" id="minutes">59</span><span class="timer-label">Mins</span></div>
+    <div class="timer-block"><span class="timer-num" id="seconds">59</span><span class="timer-label">Secs</span></div>
+  </div>
+</div>
+
+<!-- BONUS -->
+<section class="bonus-section">
+  <div style="position:relative; z-index:1; max-width:700px; margin:0 auto; text-align:center;">
+    <span class="section-label">🎁 FREE Bonus — Limited Time Only</span>
+    <h2 style="color:#fff; font-family:'Playfair Display',serif; margin-bottom:40px;">Order Today & Get This <span style="color:var(--gold);">Invaluable Bonus</span> Absolutely Free</h2>
+    <div class="bonus-card fade-in">
+      <span class="bonus-badge">🎁 Free Bonus — Today Only</span>
+      <div class="bonus-title">Baby Feeding & Sleep Tracker</div>
+      <div class="bonus-desc">The printable tracker that new mums swear by. Keep effortless records of every feed, sleep session, and nappy change — so you always know what's happening with your baby at a glance.</div>
+      <ul class="bonus-features">
+        <li>Daily feed time & duration tracker (breast & bottle)</li>
+        <li>Sleep start/end time log with total hours</li>
+        <li>Nappy change record to spot patterns fast</li>
+        <li>Weekly summary overview at a glance</li>
+        <li>Designed to print or use digitally on any device</li>
+      </ul>
+      <div class="bonus-value">Valued at £19 — yours FREE when you order today</div>
+    </div>
+  </div>
+</section>
+
+<!-- RATIONALE SECTION -->
+<section style="background: var(--cream); padding: 80px 24px;">
+  <div style="max-width: 720px; margin: 0 auto;">
+    <div class="fade-in" style="background: #fff; border-radius: 24px; padding: 48px 40px; border: 1px solid rgba(212,115,106,0.15); box-shadow: 0 8px 40px rgba(44,26,26,0.08); position: relative; overflow: hidden;">
+      
+      <!-- Top accent bar -->
+      <div style="position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--rose), var(--gold));"></div>
+      
+      <!-- Label -->
+      <div style="text-align: center; margin-bottom: 28px;">
+        <span style="display: inline-block; font-size: 11px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--rose); border: 1px solid rgba(212,115,106,0.3); padding: 8px 20px; border-radius: 100px;">A Personal Message From Me</span>
+      </div>
+
+      <!-- Story -->
+      <h2 style="font-family: 'Playfair Display', serif; font-size: clamp(1.5rem, 3.5vw, 2.2rem); font-weight: 700; color: var(--deep); line-height: 1.3; margin-bottom: 28px; text-align: center;">Why Am I Giving You This<br>at Such a Discount?</h2>
+
+      <div style="font-size: 1.05rem; line-height: 1.9; color: #5a3a3a;">
+        <p style="margin-bottom: 20px;">I've been pregnant <strong>5 times.</strong></p>
+        <p style="margin-bottom: 20px;"><strong>2 of which ended in miscarriage.</strong></p>
+        <p style="margin-bottom: 20px;">For a long time, I blamed myself. Because if I'm being completely honest, a lot of what happened came down to <em>ignorance</em>. Things I didn't know. Warning signs I missed. Mistakes I made simply because nobody ever gave me the right information at the right time.</p>
+
+        <div style="background: var(--blush); border-left: 4px solid var(--rose); border-radius: 0 12px 12px 0; padding: 20px 24px; margin: 28px 0;">
+          <p style="margin: 0; font-style: italic; color: var(--deep); font-size: 1.05rem;">That pain never fully leaves you. And I wouldn't wish it on any mother.</p>
+        </div>
+
+        <p style="margin-bottom: 20px;">When I finally sat down to create this bundle — pouring everything I wish I had known into these guides — I made a decision. I refuse to price it in a way that stops the mums who need it most from getting it.</p>
+        <p style="margin-bottom: 20px;">This isn't just a product to me. It's <strong>everything I would have given anything to have</strong> during my own journey.</p>
+        <p style="margin-bottom: 28px;">So yes — <strong style="color: var(--rose);">£79 for £224 worth of guidance.</strong> That's not a mistake. That's intentional. That's me making sure no mum has to go through what I went through simply because she didn't have access to the right information.</p>
+      </div>
+
+      <!-- Sign off -->
+      <div style="text-align: center; padding-top: 24px; border-top: 1px dashed rgba(212,115,106,0.2);">
+        <p style="font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--rose); font-style: italic; margin-bottom: 4px;">Stay Safe Mamas 🌸</p>
+        <p style="font-size: 0.85rem; color: #aaa;">— From a mum who truly understands</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GODFATHER OFFER -->
+<section class="offer" id="offer">
+  <div class="offer-inner">
+    <span class="section-label">The Complete Package</span>
+    <h2>Here's <em style="font-style:italic; color:var(--rose);">Everything</em> You Get Today</h2>
+    <p class="offer-sub">This is the complete support system every first-time mum deserves — at a price that makes saying no feel almost ridiculous.</p>
+
+    <div class="value-stack fade-in">
+      <h3>📦 What's Included — Total Value Breakdown</h3>
+      <div class="value-item"><span>Guide 1: Navigate Pregnancy Month by Month</span><span>£35</span></div>
+      <div class="value-item"><span>Guide 2: Pack the Perfect Hospital Bag</span><span>£25</span></div>
+      <div class="value-item"><span>Guide 3: Newborn Care in the First 90 Days</span><span>£45</span></div>
+      <div class="value-item"><span>Guide 4: Breastfeed Successfully</span><span>£35</span></div>
+      <div class="value-item"><span>Guide 5: Postpartum Recovery Guide</span><span>£40</span></div>
+      <div class="value-item"><span>Guide 6: Eliminate Pregnancy Nausea Naturally</span><span>£25</span></div>
+      <div class="value-item" style="background:rgba(201,169,110,0.08); border-radius:8px; padding:12px 8px; margin-top:8px;">
+        <span><strong>🎁 BONUS: Baby Feeding & Sleep Tracker</strong></span><span style="color:var(--gold);">£19</span>
+      </div>
+      <div class="value-total">
+        <span>Total Value</span>
+        <span class="strikethrough">£224</span>
+      </div>
+    </div>
+
+    <div class="price-display fade-in">
+      <div class="was-price">Usually £224</div>
+      <div class="now-price">£79</div>
+      <div class="price-note">One-time payment · Instant digital access · No subscription</div>
+    </div>
+
+    <a href="https://dylancoleman1.gumroad.com/l/firsttimemomsurvivalbundle" class="cta-btn" style="font-size:1.15rem; padding:22px 56px;">
+      🔒 Yes! Give Me Instant Access for £79 →
+    </a>
+    <p class="cta-sub">Secure checkout · Instant delivery to your inbox · Download on any device</p>
+
+    <div style="margin-top:32px; padding:20px; background:#fff; border-radius:12px; border:1px dashed rgba(212,115,106,0.3);">
+      <p style="font-size:0.9rem; color:#7a5a5a; line-height:1.7;">
+        ⏰ <strong>Remember:</strong> The Baby Feeding & Sleep Tracker bonus disappears when the timer hits zero. Once it's gone, you'll only get the 6 guides at a higher price. Grab the full bundle now while you still can.
+      </p>
+    </div>
+
+    <!-- POWER GUARANTEE -->
+    <div class="fade-in" style="margin-top: 48px; background: linear-gradient(135deg, #f0f7f0, #e8f4e8); border-radius: 24px; padding: 40px 36px; border: 2px solid rgba(139,168,136,0.3); text-align: center;">
+      <div style="width: 64px; height: 64px; background: var(--sage); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-size: 1.8rem;">🛡️</div>
+      <h3 style="font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--deep); margin-bottom: 12px; font-weight: 700;">My Personal 30-Day Guarantee</h3>
+      <p style="font-size: 1rem; color: #5a3a3a; line-height: 1.8; max-width: 520px; margin: 0 auto 20px;">Try the entire bundle for <strong>30 days.</strong> Go through every guide. Use the tracker. If you don't find it genuinely helpful — email me and I'll refund every single penny. No questions asked. No hoops to jump through.</p>
+      <div style="display: inline-block; background: #fff; border-radius: 12px; padding: 12px 24px; border: 1px solid rgba(139,168,136,0.3);">
+        <p style="font-size: 0.9rem; color: var(--sage); font-weight: 600; margin: 0;">✅ 30 Day Money Back Guarantee · Zero Risk · You Have Nothing to Lose</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <div class="testimonials-inner fade-in">
+    <h2>Mums Who've Already Used This Bundle Love It</h2>
+    <div class="testi-grid">
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <p class="testi-text">"I was absolutely terrified going into my first pregnancy. This bundle answered every question I didn't even know I had. The postpartum guide alone was worth every penny."</p>
+        <div class="testi-author">Sarah M.</div>
+        <div class="testi-role">First-time mum, London</div>
+      </div>
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <p class="testi-text">"The hospital bag checklist saved me from total chaos. I was so prepared when the day came. And the sleep tracker? I use it every single day — can't imagine life without it."</p>
+        <div class="testi-author">Priya K.</div>
+        <div class="testi-role">New mum, Manchester</div>
+      </div>
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <p class="testi-text">"The breastfeeding guide is incredible. I was ready to give up in week one. This guide walked me through exactly what to do and now we're still going at 4 months. Genuinely grateful."</p>
+        <div class="testi-author">Emma T.</div>
+        <div class="testi-role">Mum of 1, Birmingham</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq">
+  <div class="faq-inner fade-in">
+    <h2>Questions? We've Got Answers.</h2>
+    <div class="faq-item">
+      <div class="faq-q">How do I receive the bundle after purchase?</div>
+      <div class="faq-a">You'll receive an email immediately after checkout with download links to all 6 guides and your bonus tracker. Access them instantly on any device.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Is this suitable if I'm in my first trimester?</div>
+      <div class="faq-a">Absolutely. The bundle covers everything from early pregnancy all the way through postpartum, so the earlier you start, the more value you'll get from it.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What format are the guides in?</div>
+      <div class="faq-a">All guides are delivered as beautifully formatted PDFs. The Baby Feeding & Sleep Tracker is available as both a printable PDF and a digital version you can fill in on your phone or tablet.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What happens when the timer runs out?</div>
+      <div class="faq-a">The Baby Feeding & Sleep Tracker bonus will no longer be included in the bundle, and the price will return to the standard rate. This offer is strictly time-limited.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Is there a money back guarantee?</div>
+      <div class="faq-a">Absolutely. Try the full bundle for 30 days. If you're not completely satisfied simply email me and I'll refund every penny — no questions asked.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Is this a one-time payment?</div>
+      <div class="faq-a">Yes — just £79 once. No subscriptions, no hidden fees. You own it forever and can download it as many times as you need.</div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta">
+  <div class="final-cta-inner fade-in">
+    <h2>You Deserve to Feel <em style="font-style:italic; color:var(--rose);">Ready.</em></h2>
+    <p>Six complete guides. A bonus tracker. Everything you need for pregnancy, birth, breastfeeding, newborn care, and recovery — all for £79. But only if you act before the bonus disappears.</p>
+    <a href="https://dylancoleman1.gumroad.com/l/firsttimemomsurvivalbundle" class="cta-btn gold" style="font-size:1.1rem; padding:22px 52px;">
+      🔒 Claim My Bundle + Bonus for £79 →
+    </a>
+    <p style="color:rgba(255,255,255,0.4); font-size:0.8rem; margin-top:16px;">Secure checkout · Instant access · Limited-time bonus included</p>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 First-Time Mom Survival Bundle · All rights reserved</p>
+</footer>
+
+<script>
+  // Countdown Timer — 48 hours from page load (or use stored end time)
+  const key = 'bundle_timer_end';
+  let endTime = localStorage.getItem(key);
+  if (!endTime) {
+    endTime = Date.now() + 48 * 60 * 60 * 1000;
+    localStorage.setItem(key, endTime);
+  }
+
+  function updateTimer() {
+    const diff = Math.max(0, endTime - Date.now());
+    const h = Math.floor(diff / 3600000);
+    const m = Math.floor((diff % 3600000) / 60000);
+    const s = Math.floor((diff % 60000) / 1000);
+    document.getElementById('hours').textContent = String(h).padStart(2,'0');
+    document.getElementById('minutes').textContent = String(m).padStart(2,'0');
+    document.getElementById('seconds').textContent = String(s).padStart(2,'0');
+    if (diff > 0) setTimeout(updateTimer, 1000);
+  }
+  updateTimer();
+
+  // Scroll fade-in
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
